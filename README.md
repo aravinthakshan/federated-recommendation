@@ -1,7 +1,3 @@
-Here's a **README.md** file for your project, which outlines the purpose, setup, and usage of your federated learning-based recommendation system.
-
----
-
 # Federated Recommender System
 
 A federated learning-based recommendation system where a central model trains and updates based on aggregated user data without compromising privacy. Users receive personalized recommendations locally, while the central server learns across clients to improve model accuracy.
