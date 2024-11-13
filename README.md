@@ -40,7 +40,7 @@ Make sure you have the following installed:
 1. **Clone the Repository**
 
    ```bash
-   git clone https://github.com/yourusername/federated_recommender.git
+   git clone https://github.com/aravinthakshan/federated_recommender.git
    cd federated_recommender
    ```
 
