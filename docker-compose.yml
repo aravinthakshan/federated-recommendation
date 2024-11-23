@@ -1,0 +1,44 @@
+version: '3'
+
+services:
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    environment:
+      - REACT_APP_API_URL=http://localhost:5000
+
+  backend:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+    depends_on:
+      - mongodb
+      - fl_server
+    environment:
+      - MONGODB_URI=mongodb://mongodb:27017/recommender_db
+      - JWT_SECRET=your-secret-key
+      - FL_SERVER_ADDRESS=fl_server:8080
+
+  fl_server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile.fl
+    ports:
+      - "8080:8080"
+
+  mongodb:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+
+volumes:
+  mongodb_data:
